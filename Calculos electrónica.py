@@ -126,8 +126,7 @@ def linealizer_resist():
     R3= float(input('Ingrese el valor de Rt3 del sensor:  '))
     aux_lineal_res=0.1
     aux_lineal_res= (R2*(R1+R3)-(2*R1*R3))/(R1+R3-(2*R2))
-    print(aux_lineal_res)
-    itered_resul=aux_lineal_res+500.1
+    itered_resul=aux_lineal_res+500000.1
 
     util_range=len(comercial_res_col)
 
@@ -220,30 +219,17 @@ def paralel_calculate():
     aux_amp_inv=0.1
     itered_resul=paralel_result+500.1
 
-    util_range=len(comercial_res_col)
+    print('La resistencia en paralelo es: {} '.format(paralel_result))
+    print('''
+            0
+            |__
+            |  |
+         R2 Z  Z R1
+            |__|
+            |
+            =
 
-    for i in range(util_range):
-
-        if abs(comercial_res_col[i]-paralel_result)<abs(itered_resul-paralel_result):
-
-            itered_resul=comercial_res_col[i]
-    try:
-        error_percent=abs((paralel_result-itered_resul)/paralel_result)*100# cambiae
-        #res_aprox=
-        print('La resistencia {} y su valor comercial aproximado es {}'.format(paralel_result, itered_resul))
-        print('''
-                0
-                |__
-                |  |
-             R2 Z  Z R1
-                |__|
-                |
-                =
-
-        ''')
-        print('El porcentaje de error es {}%'.format(error_percent))
-    except:
-        print('No hay una aproximación cercana factible')
+    ''')
 
 @start
 def paralel_fabricate():
